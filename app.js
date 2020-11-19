@@ -4,8 +4,13 @@ var weapons = ['sword', 'dagger', 'knife', 'spear', 'axe', 'spike', 'hammer', 'd
 
 
 for (var i = 0; i < 100; i++){
-    var h3 = $('body').append('<h3> Accusation ' + i + '</h3>')
-    .click(function(){
-        console.log('Accusation ' + i + ': I accuse ' + friends[i % friends.length] + ', with the ' + weapons[i % weapons.length] + ' in ' + locations[i % locations.length] + ' !');
-    })
+    var h3 = $('<h3> Accusation ' + i + '</h3>')
+    .click(closeThis(i));
+    $('body').append(h3)
+}
+
+function closeThis(numToRemember){
+    return function (){
+        console.log('Accusation ' + numToRemember + ': I accuse ' + friends[numToRemember % friends.length] + ', with the ' + weapons[numToRemember % weapons.length] + ' in ' + locations[numToRemember % locations.length] + ' !')
+    }
 }
